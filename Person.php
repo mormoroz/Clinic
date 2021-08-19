@@ -2,8 +2,8 @@
 
 // Basic class
 class Person{
-    protected $age;
-    protected $name;
+    protected int $age;
+    protected string $name;
 
     function __construct() {
         $this->age = 0;
