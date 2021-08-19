@@ -13,12 +13,20 @@ class Clinic
     private int $countPatient;
     private int $countDoctor;
 
-    public function __construct(Patient $newPatient, Doctor $newDoctor)
+    private function __construct(Patient $newPatient, Doctor $newDoctor)
     {
         $this->listPatients[] = $newPatient;
         $this->countPatient = START_COUNT_ELEMENTS;
         $this->listDoctors[] = $newDoctor;
         $this->countDoctor = START_COUNT_ELEMENTS;
+    }
+
+    private static $instance = null;
+    public static function getInstance(Patient $newPatient, Doctor $newDoctor)
+    {
+        if (is_null(self::$instance))
+            self::$instance = new self($newPatient, $newDoctor);
+        return self::$instance;
     }
 
     function inputListPatient() {

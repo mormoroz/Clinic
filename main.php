@@ -7,8 +7,12 @@ spl_autoload_register(function ($className)
 
 $doctor = new Doctor();
 $patient = new Patient();
-$clinic= new Clinic($patient, $doctor);
-$clinic-> inputListPatient();
+$clinic = Clinic::getInstance($patient, $doctor);
+$clinic -> inputListPatient();
 $clinic -> inputListDoctor();
-$clinic-> printListPatient();
-$clinic-> printListDoctor();
+$clinic -> printListPatient();
+$clinic -> printListDoctor();
+$clinicTest = Clinic::getInstance($patient, $doctor);
+$clinicTest -> inputListDoctor();
+$clinicTest -> printListDoctor();
+$clinic -> printListDoctor();
