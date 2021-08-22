@@ -1,22 +1,25 @@
 <?php
 
+
 // Basic class
 class Person{
-    protected $age;
-    protected $name;
+    protected int $age;
+    protected string $name;
 
     function __construct() {
         $this->age = 0;
         $this->name = "None";
     }
 
-    function inputPerson(){
+    function inputPerson()
+    {
         echo "Age: ";
-        $this->age = readline();
+        $this->age = setNumber();
         echo "Name: ";
         $this->name = readline();
     }
-    function printPerson(){
+    function printPerson()
+    {
         echo "Age: " . $this->age . "\n";
         echo "Name: " . $this->name . "\n";
     }

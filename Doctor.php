@@ -1,7 +1,7 @@
 <?php
 class Doctor extends Person
 {
-    private $speciality;
+    private string $speciality;
 
     function __construct()
     {

@@ -2,7 +2,7 @@
 
 class Patient extends Person
 {
-    private $illness;
+    private string $illness;
 
     function __construct()
     {
