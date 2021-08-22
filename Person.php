@@ -1,5 +1,6 @@
 <?php
 
+
 // Basic class
 class Person{
     protected int $age;
@@ -10,13 +11,15 @@ class Person{
         $this->name = "None";
     }
 
-    function inputPerson(){
+    function inputPerson()
+    {
         echo "Age: ";
-        $this->age = readline();
+        $this->age = setNumber();
         echo "Name: ";
         $this->name = readline();
     }
-    function printPerson(){
+    function printPerson()
+    {
         echo "Age: " . $this->age . "\n";
         echo "Name: " . $this->name . "\n";
     }

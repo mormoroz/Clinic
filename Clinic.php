@@ -1,6 +1,7 @@
 <?php
 const START_COUNT_ELEMENTS = 0;
 
+
 class Clinic
 {
     /**
@@ -31,31 +32,35 @@ class Clinic
 
     function inputListPatient() {
         echo "Count of patients: ";
-        $this->countPatient = readline();
-        for ($i = 0; $i < $this->countPatient; $i++) {
+        $newCountPatient = setNumber();
+        for ($i = $this->countPatient; $i < ($this->countPatient+$newCountPatient); $i++) {
             echo"-------------------------";
             echo "\nInput patient №". ($i+1). "\n";
             $newPatient = new Patient;
             $newPatient->inputElement();
             $this->listPatients[$i] = $newPatient;
         }
+        $this->countPatient = $newCountPatient + $this->countPatient;
     }
 
     function inputListDoctor() {
         echo "Count of doctors: ";
-        $this->countDoctor = readline();
-        for ($i = 0; $i < $this->countDoctor; $i++) {
+        $newCountDoctor = setNumber();
+        for ($i = $this->countDoctor; $i < ($newCountDoctor+$this->countDoctor); $i++) {
             echo"-------------------------";
             echo "\nInput doctor №". ($i+1). "\n";
             $newDoctor = new Doctor;
             $newDoctor->inputElement();
             $this->listDoctors[$i] = $newDoctor;
         }
+        $this->countDoctor = $newCountDoctor + $this->countDoctor;
     }
 
     function printListPatient() {
         echo"-------------------------";
-        echo"\nInfo about patients\n";
+        echo"\nInfo about patients for ";
+        echo date('r');
+        echo"\n";
         for ($i = 0; $i < $this->countPatient; $i++) {
             echo"-------------------------";
             echo"\nPatient №". ($i+1). "\n";
@@ -65,7 +70,9 @@ class Clinic
 
     function printListDoctor() {
         echo"-------------------------";
-        echo"\nInfo about doctors\n";
+        echo"\nInfo about doctors";
+        echo date('r');
+        echo"\n";
         for ($i = 0; $i < $this->countDoctor; $i++)
         {
             echo"-------------------------";
