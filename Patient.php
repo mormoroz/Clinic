@@ -1,25 +1,63 @@
 <?php
 
-class Patient extends Person
+class Patient extends BuilderPatient
 {
-    private string $illness;
+    private int $age;
+    private string $name;
+    private array $illness = [];
+    private int $discount;
 
-    function __construct()
+    /**
+     * @param string $name
+     */
+    public function setName($name): void
     {
-        parent::__construct();
-        $this->illness = "None";
+        $this->name = $name;
     }
 
-    function inputElement()
+    /**
+     * @return string
+     */
+    public function getName(): string
     {
-        parent::inputPerson();
-        echo "Illness: ";
-        $this->illness = readline();
+        return $this->name;
     }
 
-    function printElement()
+    /**
+     * @param int $age
+     */
+    public function setAge($age): void
     {
-        parent::printPerson();
-        echo "Illness: " . $this->illness . "\n";
+        $this->age = $age;
     }
+
+    public function getAge(): int
+    {
+        return $this->age;
+    }
+
+    public function addIllness($illness)
+    {
+        $this->illness [] = $illness;
+    }
+
+    public function getIllness()
+    {
+        return $this->illness;
+    }
+
+    public function setDiscount($discount)
+    {
+        $this->discount = $discount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDiscount(): int
+    {
+        return $this->discount;
+    }
+
+
 }

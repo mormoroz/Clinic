@@ -43,6 +43,15 @@ function menu($clinic)
 
 }
 
-$factory = new Factory;
-$clinic = $factory->build();
-menu($clinic);
+
+$invalid = new BuilderVisitor();
+$invalid->createPatient();
+$invalid->setName('Alexander');
+$invalid->setAge(21);
+$invalid->addIllness('Diabet');
+$invalid->setDiscount();
+
+echo "Discount: " . $invalid->getDiscount();
+//$factory = new Factory;
+//$clinic = $factory->build();
+//menu($clinic);

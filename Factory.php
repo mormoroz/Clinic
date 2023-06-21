@@ -3,8 +3,8 @@ class Factory{
 
     public function build():Clinic
     {
-        $newPatient = $this->buildPatient();
-        $newDoctor = $this->buildDoctor();
+//        $newPatient = $this->buildPatient();
+//        $newDoctor = $this->buildDoctor();
         return $this->buildClinic($newPatient, $newDoctor);
     }
 
