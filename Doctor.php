@@ -1,24 +1,16 @@
 <?php
-class Doctor extends Person
+
+interface Doctor
 {
-    private string $speciality;
+    public function setName($name);
 
-    function __construct()
-    {
-        parent::__construct();
-        $this->speciality = "None";
-    }
+    public function getName();
 
-    function inputElement()
-    {
-        parent::inputPerson();
-        echo "Speciality: ";
-        $this->speciality = readline();
-    }
+    public function setSpeciality($speciality);
 
-    function printElement()
-    {
-        parent::printPerson();
-        echo "Speciality: " . $this->speciality . "\n";
-    }
+    public function getSpeciality();
+
+    public function setCost(? int $bonus);
+
+    public function getCost();
 }

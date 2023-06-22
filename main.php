@@ -1,4 +1,5 @@
 <?php
+const EXIT_COMMAND = 5;
 
 spl_autoload_register(function ($className)
 {
@@ -20,38 +21,39 @@ function printMenu()
 function menu($clinic)
 {
     $chooseUser=0;
+    printMenu();
+    $chooseUser = readline();
     while ($chooseUser != 5)
     {
+        $factory = new ClinicCommandFactory();
+        $factory->factory($chooseUser, $clinic)->execute();
         printMenu();
         $chooseUser = readline();
-        switch($chooseUser)
-        {
-            case 1:
-                $clinic -> inputListPAtient();
-                break;
-            case 2:
-                $clinic -> inputListDoctor();
-                break;
-            case 3:
-                $clinic -> printListPatient();
-                break;
-            case 4:
-                $clinic -> printListDoctor();
-                break;
-        }
     }
 
 }
 
+$clinic = Clinic::getInstance();
+//$patient = new Patient();
+menu($clinic);
 
-$invalid = new BuilderVisitor();
-$invalid->createPatient();
-$invalid->setName('Alexander');
-$invalid->setAge(21);
-$invalid->addIllness('Diabet');
-$invalid->setDiscount();
 
-echo "Discount: " . $invalid->getDiscount();
+//
+//$invalid = new BuilderVisitor();
+//$invalid->createPatient();
+//$invalid->setName('Alexander');
+//$invalid->setAge(21);
+//$invalid->addIllness('Diabet');
+//$invalid->setDiscount();
+//
+//echo "Discount: " . $invalid->getDiscount() . PHP_EOL;
 //$factory = new Factory;
 //$clinic = $factory->build();
 //menu($clinic);
+//
+//$doctor = new Therapist();
+//$doctor->setCost();
+//echo "Your salary: " . $doctor->getCost() . PHP_EOL;
+//$doctor = new ChiefDoctor($doctor);
+//$doctor->setCost();
+//echo "Your salary is update: " . $doctor->getCost() . PHP_EOL;

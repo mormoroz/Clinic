@@ -30,8 +30,10 @@ class BuilderPensioner extends BuilderPatient
     function getIllness()
     {
         echo "Illness: ";
-        foreach ($this->patient->getIllness() as $illness)
+        foreach ($this->patient->getIllness() as $illness) {
             echo $illness . " ";
+        }
+        echo PHP_EOL;
     }
 
     public function setDiscount()
