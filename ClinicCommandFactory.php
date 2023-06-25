@@ -20,6 +20,18 @@ class ClinicCommandFactory
         {
             return new PrintDoctorsCommand($clinic);
         }
+        if ($chooseUser == 5)
+        {
+            return new SearchDoctorCommand($clinic);
+        }
+        if ($chooseUser == 6)
+        {
+            return new UpdateCostDoctorCommand($clinic);
+        }
+        if ($chooseUser == 7)
+        {
+            return new ChangeDoctorCommand($clinic);
+        }
         if ($chooseUser == EXIT_COMMAND)
         {
             return 0;

@@ -22,7 +22,7 @@ class Nurse extends DoctorDecorator
         return $this->doctor->getSpeciality();
     }
 
-    public function setCost(? int $bonus = -500)
+    public function setCost(? int $bonus = 500)
     {
         $this->doctor->setCost($bonus);
     }

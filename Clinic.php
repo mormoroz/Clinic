@@ -124,4 +124,80 @@ class Clinic
             echo $this->listDoctors[$i];
         }
     }
+
+    function searchNameDoctor($searchDoctor): array
+    {
+        $listSearchDoctors = [];
+        for ($i = 0; $i < $this->countDoctor; $i++) {
+            if ($this->listDoctors[$i]->getName() == $searchDoctor) {
+                $listSearchDoctors [] = $this->listDoctors[$i];
+            }
+        }
+        return $listSearchDoctors;
+    }
+
+
+    function searchDoctor() {
+        echo "Enter name of Doctor: ";
+        $searchDoctor = readline();
+        $listSearchDoctors = $this->searchNameDoctor($searchDoctor);
+            if (count($listSearchDoctors) == 0) {
+                echo "No doctors with name " . $searchDoctor . PHP_EOL;
+            }
+            else {
+                foreach ($listSearchDoctors as $doctor) {
+                    echo"-------------------------";
+                    echo $doctor;
+                }
+            }
+        }
+
+    function updateCostDoctor() {
+        echo "Enter name of Doctor: ";
+        $searchDoctor = readline();
+        $listSearchDoctors = $this->searchNameDoctor($searchDoctor);
+        if (count($listSearchDoctors) == 0) {
+            echo "No doctors with name " . $searchDoctor . PHP_EOL;
+        }
+        else {
+            foreach ($listSearchDoctors as $doctor) {
+                echo "Input new cost for doctor " . $doctor->getName() . PHP_EOL;
+                $newCost = readline();
+                $doctor->setCost($newCost);
+            }
+        }
+    }
+
+    function changeDoctor() {
+        echo "Enter name of Doctor: ";
+        $searchDoctor = readline();
+        $listSearchDoctors = $this->searchNameDoctor($searchDoctor);
+        if (count($listSearchDoctors) == 0) {
+            echo "No doctors with name " . $searchDoctor . PHP_EOL;
+        }
+        else {
+            foreach ($listSearchDoctors as $doctor) {
+                echo"-------------------------";
+                echo $doctor;
+                echo "New position (Nurse, Therapist, Chief): ";
+                $typeDoctor = readline();
+                switch ($typeDoctor) {
+                    case "Nurse":
+                        $doctor = new Nurse($doctor);
+                        break;
+                    case "Therapist":
+                        $doctor = new Therapist();
+                        break;
+                    case "Chief":
+                        $doctor = new ChiefDoctor($doctor);
+                        break;
+                    default:
+                        echo "No such position";
+                }
+                $doctor->setCost();
+
+            }
+        }
+    }
+
 }

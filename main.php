@@ -1,5 +1,5 @@
 <?php
-const EXIT_COMMAND = 5;
+const EXIT_COMMAND = 8;
 
 spl_autoload_register(function ($className)
 {
@@ -14,16 +14,18 @@ function printMenu()
     echo "2. Add new doctors\n";
     echo "3. Print info about all patients\n";
     echo "4. Print info about all doctors\n";
-    echo "5. Exit\n";
+    echo "5. Search doctor by name\n";
+    echo "6. Update cost of doctor\n";
+    echo "7. Change doctor level\n";
+    echo "8. Exit\n";
     echo ">";
 }
 
 function menu($clinic)
 {
-    $chooseUser=0;
     printMenu();
     $chooseUser = readline();
-    while ($chooseUser != 5)
+    while ($chooseUser != EXIT_COMMAND)
     {
         $factory = new ClinicCommandFactory();
         $factory->factory($chooseUser, $clinic)->execute();

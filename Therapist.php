@@ -26,9 +26,9 @@ class Therapist implements Doctor
         return $this->speciality;
     }
 
-    public function setCost(?int $bonus = 0)
+    public function setCost(?int $bonus = 1000)
     {
-        $this->cost = 1000 + $bonus;
+        $this->cost = $bonus;
     }
 
     public function getCost(): string
